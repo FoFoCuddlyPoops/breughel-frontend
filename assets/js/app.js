@@ -1,6 +1,6 @@
 'use strict';
 require('angular');
-require('app-bootstrap.js');
+require('./app-bootstrap.js');
 
 (function() {
     var app = angular.module('breughel',

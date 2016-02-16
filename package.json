@@ -1,0 +1,24 @@
+{
+  "name": "breughel-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "angular": "^1.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FoFoCuddlyPoops/breughel-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FoFoCuddlyPoops/breughel-frontend/issues"
+  },
+  "homepage": "https://github.com/FoFoCuddlyPoops/breughel-frontend"
+}

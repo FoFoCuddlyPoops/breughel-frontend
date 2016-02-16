@@ -2,11 +2,11 @@
 
 require('angular');
 require('angular-ui-router');
-require('modules/admin/profile/index.js');
-require('modules/admin/education/index.js');
-require('modules/admin/experience/index.js');
-require('modules/admin/certificates/index.js');
-require('modules/admin/account/index.js');
+require('./modules/admin/profile/index.js');
+require('./modules/admin/education/index.js');
+require('./modules/admin/experience/index.js');
+require('./modules/admin/certificates/index.js');
+require('./modules/admin/account/index.js');
 
 module.exports = angular.module('breughel.module.administration',
     [
