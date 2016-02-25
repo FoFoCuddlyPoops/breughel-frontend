@@ -11,6 +11,7 @@ require('./modules/admin/index.js');
 },{"./modules/admin/index.js":3,"./modules/authentication/index.js":8,"./modules/authorization/index.js":9,"./modules/core/index.js":10,"./modules/finder/index.js":11,"./modules/registration/index.js":12,"./modules/services/index.js":13}],2:[function(require,module,exports){
 'use strict';
 require('angular');
+require('angular-ui-router');
 require('./app-bootstrap.js');
 
 (function () {
@@ -19,11 +20,9 @@ require('./app-bootstrap.js');
       'breughel.module.admin'
     ]);
 })();
-},{"./app-bootstrap.js":1,"angular":16}],3:[function(require,module,exports){
+},{"./app-bootstrap.js":1,"angular":16,"angular-ui-router":14}],3:[function(require,module,exports){
 'use strict';
 
-require('angular');
-require('angular-ui-router');
 require('./users/index.js');
 module.exports = angular.module('breughel.module.admin', ['ui.router', 'breughel.module.admin.users']).config(['$stateProvider', '$urlRouterProvider',
   function ($stateProvider, $urlRouterProvider) {
@@ -35,7 +34,7 @@ module.exports = angular.module('breughel.module.admin', ['ui.router', 'breughel
         template: '<ui-view/>'
       });
   }]);
-},{"./users/index.js":6,"angular":16,"angular-ui-router":14}],4:[function(require,module,exports){
+},{"./users/index.js":6}],4:[function(require,module,exports){
 'use strict';
 var usersModule = require('./../index.js');
 
@@ -55,9 +54,6 @@ var IndexController = ['$scope', function ($scope) {
 usersModule.controller('IndexController', IndexController);
 },{"./../index.js":6}],6:[function(require,module,exports){
 'use strict';
-require('angular');
-require('angular-ui-router');
-
 module.exports = angular.module('breughel.module.admin.users', ['ui.router']);
 
 // Routes file
@@ -66,7 +62,7 @@ require('./userRoutes.js');
 // Controllers
 require('./controllers/indexController.js');
 require('./controllers/createController.js');
-},{"./controllers/createController.js":4,"./controllers/indexController.js":5,"./userRoutes.js":7,"angular":16,"angular-ui-router":14}],7:[function(require,module,exports){
+},{"./controllers/createController.js":4,"./controllers/indexController.js":5,"./userRoutes.js":7}],7:[function(require,module,exports){
 'use strict';
 var usersModule = require('./index.js');
 var routes = [

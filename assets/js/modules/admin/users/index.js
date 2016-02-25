@@ -1,7 +1,4 @@
 'use strict';
-require('angular');
-require('angular-ui-router');
-
 module.exports = angular.module('breughel.module.admin.users', ['ui.router']);
 
 // Routes file
