@@ -5,23 +5,21 @@ var routes = [
   '$urlRouterProvider',
   '$locationProvider',
   function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.otherwise('/admin/users');
+    $urlRouterProvider.otherwise('/admin/users/index');
     $stateProvider
-      .state('users',{
-        url: '/admin/users',
-        abstract: true,
+      .state('admin.users', {
+        url: '/users',
         template: '<ui-view/>'
       })
-      .state('users.index', {
+      .state('admin.users.index', {
         url: '/index',
         templateUrl: 'views/users/index.html',
         controller: 'IndexController'
       })
-      .state('users.create', {
+      .state('admin.users.create', {
         url: '/create',
         templateUrl: 'views/users/create.html',
         controller: 'CreateController'
-      })
-
+      });
   }];
 usersModule.config(routes);

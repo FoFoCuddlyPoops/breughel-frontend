@@ -25,7 +25,16 @@ require('./app-bootstrap.js');
 require('angular');
 require('angular-ui-router');
 require('./users/index.js');
-module.exports = angular.module('breughel.module.admin', ['ui.router', 'breughel.module.admin.users']);
+module.exports = angular.module('breughel.module.admin', ['ui.router', 'breughel.module.admin.users']).config(['$stateProvider', '$urlRouterProvider',
+  function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/admin/users/index');
+    $stateProvider
+      .state('admin', {
+        abstract: true,
+        url: '/admin',
+        template: '<ui-view/>'
+      });
+  }]);
 },{"./users/index.js":6,"angular":16,"angular-ui-router":14}],4:[function(require,module,exports){
 'use strict';
 var usersModule = require('./../index.js');
@@ -65,24 +74,22 @@ var routes = [
   '$urlRouterProvider',
   '$locationProvider',
   function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.otherwise('/admin/users');
+    $urlRouterProvider.otherwise('/admin/users/index');
     $stateProvider
-      .state('users',{
-        url: '/admin/users',
-        abstract: true,
+      .state('admin.users', {
+        url: '/users',
         template: '<ui-view/>'
       })
-      .state('users.index', {
+      .state('admin.users.index', {
         url: '/index',
         templateUrl: 'views/users/index.html',
         controller: 'IndexController'
       })
-      .state('users.create', {
+      .state('admin.users.create', {
         url: '/create',
         templateUrl: 'views/users/create.html',
         controller: 'CreateController'
-      })
-
+      });
   }];
 usersModule.config(routes);
 },{"./index.js":6}],8:[function(require,module,exports){
