@@ -2,16 +2,9 @@
 require('angular');
 require('./app-bootstrap.js');
 
-(function() {
-    var app = angular.module('breughel',
-        [
-            // All the parent modules
-            'breughel.module.admin',
-            //'breughel.module.services',
-            //'breughel.module.finder',
-            //'breughel.module.authentication',
-            //'breughel.module.authorization',
-            //'breughel.module.registration',
-            //'breughel.module.administration',
-        ]);
+(function () {
+  var app = angular.module('breughel',
+    [
+      'breughel.module.admin'
+    ]);
 })();

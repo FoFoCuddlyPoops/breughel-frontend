@@ -8,97 +8,96 @@ require('./modules/authentication/index.js');
 require('./modules/authorization/index.js');
 require('./modules/registration/index.js');
 require('./modules/admin/index.js');
-},{"./modules/admin/index.js":3,"./modules/authentication/index.js":6,"./modules/authorization/index.js":7,"./modules/core/index.js":8,"./modules/finder/index.js":9,"./modules/registration/index.js":10,"./modules/services/index.js":11}],2:[function(require,module,exports){
+},{"./modules/admin/index.js":3,"./modules/authentication/index.js":8,"./modules/authorization/index.js":9,"./modules/core/index.js":10,"./modules/finder/index.js":11,"./modules/registration/index.js":12,"./modules/services/index.js":13}],2:[function(require,module,exports){
 'use strict';
 require('angular');
 require('./app-bootstrap.js');
 
-(function() {
-    var app = angular.module('breughel',
-        [
-            // All the parent modules
-            'breughel.module.admin',
-            //'breughel.module.services',
-            //'breughel.module.finder',
-            //'breughel.module.authentication',
-            //'breughel.module.authorization',
-            //'breughel.module.registration',
-            //'breughel.module.administration',
-        ]);
+(function () {
+  var app = angular.module('breughel',
+    [
+      'breughel.module.admin'
+    ]);
 })();
-},{"./app-bootstrap.js":1,"angular":14}],3:[function(require,module,exports){
+},{"./app-bootstrap.js":1,"angular":16}],3:[function(require,module,exports){
 'use strict';
 
 require('angular');
 require('angular-ui-router');
-require('./profile/index.js');
-module.exports = angular.module('breughel.module.admin',
-  [
-    'ui.router',
-    // All the admin submodules
-    'breughel.module.admin.profile',
-  ]);
-},{"./profile/index.js":4,"angular":14,"angular-ui-router":12}],4:[function(require,module,exports){
+require('./users/index.js');
+module.exports = angular.module('breughel.module.admin', ['ui.router', 'breughel.module.admin.users']);
+},{"./users/index.js":6,"angular":16,"angular-ui-router":14}],4:[function(require,module,exports){
+'use strict';
+var usersModule = require('./../index.js');
+
+var CreateController = ['$scope', function ($scope) {
+
+}];
+
+usersModule.controller('CreateController', CreateController);
+},{"./../index.js":6}],5:[function(require,module,exports){
+'use strict';
+var usersModule = require('./../index.js');
+
+var IndexController = ['$scope', function ($scope) {
+
+}];
+
+usersModule.controller('IndexController', IndexController);
+},{"./../index.js":6}],6:[function(require,module,exports){
 'use strict';
 require('angular');
 require('angular-ui-router');
 
-module.exports = angular.module('breughel.module.admin.profile', ['ui.router']);
+module.exports = angular.module('breughel.module.admin.users', ['ui.router']);
 
 // Routes file
-require('./profileRoutes.js');
+require('./userRoutes.js');
 
 // Controllers
-//require('Modules/Admin/Profile/Controllers/EditProfilesController.js');
-},{"./profileRoutes.js":5,"angular":14,"angular-ui-router":12}],5:[function(require,module,exports){
+require('./controllers/indexController.js');
+require('./controllers/createController.js');
+},{"./controllers/createController.js":4,"./controllers/indexController.js":5,"./userRoutes.js":7,"angular":16,"angular-ui-router":14}],7:[function(require,module,exports){
 'use strict';
-
-// gets access to the parent module
-var profileModule = require('./index.js');
-
+var usersModule = require('./index.js');
 var routes = [
   '$stateProvider',
   '$urlRouterProvider',
   '$locationProvider',
-  function($stateProvider, $urlRouterProvider,  $locationProvider){
+  function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    $urlRouterProvider.otherwise('/admin/users');
+    $stateProvider
+      .state('users',{
+        url: '/admin/users',
+        abstract: true,
+        template: '<ui-view/>'
+      })
+      .state('users.index', {
+        url: '/index',
+        templateUrl: 'views/users/index.html',
+        controller: 'IndexController'
+      })
+      .state('users.create', {
+        url: '/create',
+        templateUrl: 'views/users/create.html',
+        controller: 'CreateController'
+      })
 
-    $urlRouterProvider.otherwise('/404');
-    $stateProvider.state('admin.edit-profile', {
-      url: '/profile/edit',
-      templateUrl: 'views/admin/edit-profile.tpl.html',
-      controller: 'EditProfileController',
-      access: {
-        requiresLogin: true,
-        requiredPermissions: ['trainer'],
-        permissionType: 'AtLeastOne'
-      },
-      resolve: {
-        getMyProfile: ['ProfileService', function(ProfileService){
-          var success = function(response) { return response.data.data.profile.data; }
-          var error = function(response) { return response.data.data; }
-          return ProfileService.me().then(success, error);
-        }]
-      }
-    })
-
-    $locationProvider.html5Mode(true);
   }];
+usersModule.config(routes);
+},{"./index.js":6}],8:[function(require,module,exports){
 
-
-profileModule.config(routes);
-},{"./index.js":4}],6:[function(require,module,exports){
-
-},{}],7:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],8:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],9:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],10:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],11:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],12:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
+arguments[4][8][0].apply(exports,arguments)
+},{"dup":8}],10:[function(require,module,exports){
+arguments[4][8][0].apply(exports,arguments)
+},{"dup":8}],11:[function(require,module,exports){
+arguments[4][8][0].apply(exports,arguments)
+},{"dup":8}],12:[function(require,module,exports){
+arguments[4][8][0].apply(exports,arguments)
+},{"dup":8}],13:[function(require,module,exports){
+arguments[4][8][0].apply(exports,arguments)
+},{"dup":8}],14:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -4638,7 +4637,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -35067,8 +35066,8 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":13}]},{},[2]);
+},{"./angular":15}]},{},[2]);
