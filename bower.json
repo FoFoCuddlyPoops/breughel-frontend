@@ -1,0 +1,23 @@
+{
+  "name": "breughel-frontend",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Kevin Ryckaert <ryckaerkevin@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/FoFoCuddlyPoops/breughel-frontend",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "wow": "wowjs#^1.1.2"
+  }
+}
