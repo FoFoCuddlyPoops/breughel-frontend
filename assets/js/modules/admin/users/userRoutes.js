@@ -5,7 +5,6 @@ var routes = [
   '$urlRouterProvider',
   '$locationProvider',
   function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.otherwise('/admin/users/index');
     $stateProvider
       .state('admin.users', {
         url: '/users',
